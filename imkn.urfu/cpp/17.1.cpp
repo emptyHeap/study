@@ -10,7 +10,7 @@ class Point {
 		double y;
 	public:
 		double distance;
-		
+
 		Point(double x, double y) :
 			x(x),
 			y(y)
@@ -44,7 +44,7 @@ int main() {
 	Point *newPoint;
 	do {
 		newPoint = new Point(cin);
-		if (newPoint->quarter() == first 
+		if (newPoint->quarter() == first
 		&& (topPoint->distanceTo(zeroPoint) < newPoint->distanceTo(zeroPoint))){
 			delete topPoint;
 			topPoint = newPoint;

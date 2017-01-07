@@ -44,10 +44,10 @@ int main() {
 
 	vector<Pair> result;
 	copy_if(pairs.begin(), pairs.end(), back_inserter(result),
-		[&](const Pair& lpair) { 
+		[&](const Pair& lpair) {
 			for (Pair rpair : pairs) {
 				if (lpair.n == rpair.m) return false;
-			}	
+			}
 			return true;
 		});
 	if (result.size() == 0) {
