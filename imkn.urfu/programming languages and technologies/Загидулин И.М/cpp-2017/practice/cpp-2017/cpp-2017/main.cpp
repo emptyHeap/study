@@ -1,0 +1,42 @@
+#include <iostream>
+
+const int MAX_QUEUE = 100;
+
+int data[MAX_QUEUE];
+
+int head = 0;
+int tail = 0;
+
+void push(int x)
+{
+	data[tail] = x;
+	tail = (tail + 1) % MAX_QUEUE;
+}
+
+int pop()
+{
+	int x = data[head];
+	head = (head + 1) % MAX_QUEUE;
+	return x;
+}
+
+bool empty()
+{
+	return head == tail;
+}
+
+int size()
+{
+	return (tail - head + MAX_QUEUE) % MAX_QUEUE;
+}
+
+void main()
+{
+	for (int i = 1; i <= 20; i++)
+		push(i * i);
+
+	std::cout << size() << std::endl;
+
+	while (!empty())
+		std::cout << pop() << std::endl;
+}

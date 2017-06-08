@@ -1,0 +1,30 @@
+#include <iostream>
+
+const int MAX = 100;
+
+int s[MAX];
+
+int top = -1;
+
+void push(int x)
+{
+	top++;
+	s[top] = x;
+}
+
+int pop()
+{
+	int x = s[top];
+	top--;
+	return x;
+}
+
+int read()
+{
+	return s[top];
+}
+
+bool empty()
+{
+	return top == -1;
+}

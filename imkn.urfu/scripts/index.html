@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="bootstrap/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="bootstrap/css/dashboard.css">
+    <script src="bootstrap/js/jquery.min.js"></script>
+    <script src="bootstrap/js/bootstrap.min.js"></script>
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-3 sidebar">
+                <ul class="nav nav-sidebar">
+                    <li class="active"><a href="./polish">Польская нотация</a></li>
+                    <li><a href="./rle">Шифрование</a></li>
+                    <li><a href="./strings">Поиск строк</a></li>
+                </ul>
+            </div>
+            <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+                <div class="input-group">
+                    <span id="inf-addon" class="input-group-addon">z * (x+y)</span>
+                    <input class="form-control" placeholder="инфиксная запись" id="infix" type="text" aria-describedby="inf-addon">
+                </div>
+                <div id="variables" class="row"></div>
+                <br>
+
+                <div class="input-group">
+                    <span id="post-addon" class="input-group-addon">z x y + *</span>
+                    <input id="postfix" class="form-control" type="text" placeholder="постфиксная запись" aria-describedby="post-addon">
+                </div>
+
+                <br>
+                <input id="result" class="form-control" type="text" placeholder="результат">
+                <br>
+                <div id="calculate" class="btn btn-default">пересчитать</button>
+
+                <script src="./rpn.js"></script>
+            </div>
+        </div>
+    </div>
+    </body>
+</html>

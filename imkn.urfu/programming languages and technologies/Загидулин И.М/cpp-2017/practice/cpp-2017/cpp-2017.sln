@@ -1,0 +1,52 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.21005.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "queue", "cpp-2017\cpp-2017.vcxproj", "{77F7BE40-AF66-4D60-94C3-11D05EA4385E}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "stack", "stack\stack.vcxproj", "{A00B6BB6-11DC-44B3-A116-74560FF9BF8C}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "people", "people\people.vcxproj", "{1985E0E7-33AD-42CE-AF03-E37B0181BFBD}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "brackets", "brackets\brackets.vcxproj", "{02D7282A-B34E-4D12-AAF0-CACD9E7C5767}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Bus", "Bus\Bus.vcxproj", "{83434911-ECC1-4DFD-B435-D57422576000}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "collections", "collections\collections.vcxproj", "{F2F735A6-B82D-4988-A07D-D10273905A0F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{77F7BE40-AF66-4D60-94C3-11D05EA4385E}.Debug|Win32.ActiveCfg = Debug|Win32
+		{77F7BE40-AF66-4D60-94C3-11D05EA4385E}.Debug|Win32.Build.0 = Debug|Win32
+		{77F7BE40-AF66-4D60-94C3-11D05EA4385E}.Release|Win32.ActiveCfg = Release|Win32
+		{77F7BE40-AF66-4D60-94C3-11D05EA4385E}.Release|Win32.Build.0 = Release|Win32
+		{A00B6BB6-11DC-44B3-A116-74560FF9BF8C}.Debug|Win32.ActiveCfg = Debug|Win32
+		{A00B6BB6-11DC-44B3-A116-74560FF9BF8C}.Debug|Win32.Build.0 = Debug|Win32
+		{A00B6BB6-11DC-44B3-A116-74560FF9BF8C}.Release|Win32.ActiveCfg = Release|Win32
+		{A00B6BB6-11DC-44B3-A116-74560FF9BF8C}.Release|Win32.Build.0 = Release|Win32
+		{1985E0E7-33AD-42CE-AF03-E37B0181BFBD}.Debug|Win32.ActiveCfg = Debug|Win32
+		{1985E0E7-33AD-42CE-AF03-E37B0181BFBD}.Debug|Win32.Build.0 = Debug|Win32
+		{1985E0E7-33AD-42CE-AF03-E37B0181BFBD}.Release|Win32.ActiveCfg = Release|Win32
+		{1985E0E7-33AD-42CE-AF03-E37B0181BFBD}.Release|Win32.Build.0 = Release|Win32
+		{02D7282A-B34E-4D12-AAF0-CACD9E7C5767}.Debug|Win32.ActiveCfg = Debug|Win32
+		{02D7282A-B34E-4D12-AAF0-CACD9E7C5767}.Debug|Win32.Build.0 = Debug|Win32
+		{02D7282A-B34E-4D12-AAF0-CACD9E7C5767}.Release|Win32.ActiveCfg = Release|Win32
+		{02D7282A-B34E-4D12-AAF0-CACD9E7C5767}.Release|Win32.Build.0 = Release|Win32
+		{83434911-ECC1-4DFD-B435-D57422576000}.Debug|Win32.ActiveCfg = Debug|Win32
+		{83434911-ECC1-4DFD-B435-D57422576000}.Debug|Win32.Build.0 = Debug|Win32
+		{83434911-ECC1-4DFD-B435-D57422576000}.Release|Win32.ActiveCfg = Release|Win32
+		{83434911-ECC1-4DFD-B435-D57422576000}.Release|Win32.Build.0 = Release|Win32
+		{F2F735A6-B82D-4988-A07D-D10273905A0F}.Debug|Win32.ActiveCfg = Debug|Win32
+		{F2F735A6-B82D-4988-A07D-D10273905A0F}.Debug|Win32.Build.0 = Debug|Win32
+		{F2F735A6-B82D-4988-A07D-D10273905A0F}.Release|Win32.ActiveCfg = Release|Win32
+		{F2F735A6-B82D-4988-A07D-D10273905A0F}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

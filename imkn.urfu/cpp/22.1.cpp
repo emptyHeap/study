@@ -53,7 +53,7 @@ class Selections {
     Selections findWords() {
       vector<Selection> result;
       for (Selection selection : selectedWords) {
-        if (selection.word[0] == selection.word[selection.word.length() - 1]){
+        if (selection.word[0] != selection.word[selection.word.length() - 1]){
           result.push_back(selection);
         }
       }

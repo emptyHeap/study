@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="bootstrap/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="bootstrap/css/dashboard.css">
+    <script src="bootstrap/js/jquery.min.js"></script>
+    <script src="bootstrap/js/bootstrap.min.js"></script>
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-3 sidebar">
+                <ul class="nav nav-sidebar">
+                    <li><a href="./rpn.html">Польская нотация</a></li>
+                    <li><a href="./rle.html">Шифрование</a></li>
+                    <li class="active"><a href="./string.html">Поиск строк</a></li>
+                </ul>
+            </div>
+            <div class="col-sm-9 col-sm-offset-3 main">
+                <input class="form-control" placeholder="строка" id="string" type="text" aria-describedby="inf-addon">
+                <br>
+                <input id="substring" class="form-control" type="text" placeholder="подстрока" aria-describedby="post-addon">
+
+                <br>
+                <input id="result" class="form-control" type="text" placeholder="результат">
+                <br>
+                <div class="btn-group">
+                    <div id="naive-search" class="btn btn-default">наивный метод</div>
+                    <div id="rabin-search" class="btn btn-default">Рабин-Карп</div>
+                    <div id="summ-search" class="btn btn-default">произведения кодов </div>
+                    <div id="summ-search" class="btn btn-default">суммы кодов </div>
+                </div>
+                <script src="./string.js"></script>
+            </div>
+        </div>
+    </div>
+    </body>
+</html>

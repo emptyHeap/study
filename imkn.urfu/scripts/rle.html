@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="bootstrap/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="bootstrap/css/dashboard.css">
+    <script src="bootstrap/js/jquery.min.js"></script>
+    <script src="bootstrap/js/bootstrap.min.js"></script>
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-3 sidebar">
+                <ul class="nav nav-sidebar">
+                    <li><a href="./rpn.html">Польская нотация</a></li>
+                    <li class="active"><a href="./rle.html">Шифрование</a></li>
+                    <li><a href="./string.html">Поиск строк</a></li>
+                </ul>
+            </div>
+            <div class="col-sm-9 col-sm-offset-3 main">
+
+                <input class="file" type="file" id="input-file">
+                <br>
+
+                <div class="input-group">
+                    <span id="post-addon" class="input-group-addon">AAAAABC</span>
+                    <textarea id="unencoded-text" class="form-control" type="text" placeholder="Незакодированные данные" aria-describedby="post-addon"></textarea>
+                </div>
+                <div class="btn-group">
+                    <div id="load-orig" class="btn btn-default">загрузить</div>
+                    <div id="encode-jump" class="btn btn-default">закодировать в jump</div>
+                    <div id="encode-stop" class="btn btn-default">закодировать в stop</div>
+                </div>
+
+                <br>
+                <div class="input-group">
+                    <span id="post-addon" class="input-group-addon">[5]A[-2]BC</span>
+                    <textarea id="jump-text" class="form-control" type="text" placeholder="JUMP код" aria-describedby="post-addon"></textarea>
+                </div>
+                <div class="btn-group">
+                    <div id="load-jump" class="btn btn-default">загрузить</div>
+                    <div id="decode-jump" class="btn btn-default">расшифровать</div>
+                </div>
+
+                <br>
+                <div class="input-group">
+                    <span id="post-addon" class="input-group-addon">[#][5]ABC</span>
+                    <textarea id="stop-text" class="form-control" type="text" placeholder="STOP код" aria-describedby="post-addon"></textarea>
+                </div>
+                <div class="btn-group">
+                    <div id="load-stop" class="btn btn-default">загрузить</div>
+                    <div id="decode-stop" class="btn btn-default">расшифровать</div>
+                </div>
+
+                <script src="./rle.js"></script>
+            </div>
+        </div>
+    </div>
+    </body>
+</html>

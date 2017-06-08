@@ -138,7 +138,7 @@ int main(void) {
 
   if (second->contains(*first)) {
     cout << "first poly is inside second\n";
-    cout << "area difference: " << second->area() - first->area() << "\n";
+    cout << "area difference: " << (second->area() - first->area()) << "\n";
   } else {
     cout << "first poly is not inside second\n";
   }
