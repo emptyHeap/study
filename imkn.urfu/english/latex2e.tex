@@ -1,0 +1,364 @@
+\documentclass[a4paper]{book}
+
+\usepackage[T1,T2A]{fontenc}
+\usepackage[utf8x]{inputenc}
+\usepackage[russian]{babel}
+\usepackage{listings}
+\usepackage{longtable}
+\usepackage{booktabs}
+\usepackage{array}
+
+\newcommand{\ttcode}[1]{%
+    \texttt{#1}%
+}
+\newcommand{\ttcsname}[1]{%
+    \ttcode{\char`\\#1}%
+}
+
+\begin{document}
+
+\chapter{Overview of \LaTeX}
+
+\begin{longtable}{p{7.5cm}|p{7.5cm}}
+\hline
+  Original & Перевод \\
+\hline
+
+\LaTeX\ is a system for typesetting documents. It was originally created by Leslie Lamport and is now maintained by a group of volunteers (http://latex-project.org). It is widely used, particulary for complex and technical documents, such as those involving mathematics.
+&
+\LaTeX\ это система для вёрстки документов. Изначально созданная Лесли Лампортом и сейчас поддерживающаяся группой волонтёров (http://latex-project.org). Она широко используется, удобна для сложных и технических документов, как те, которые включают математику.
+
+\\
+
+A \LaTeX\ user writes an input file containing text along with interspersed commands, for instance commands describing how the text should be formatted. It is implemented as a set of related commands that interface with Donald E. Knuth's \TeX\ typesetting program (the technical term is that \LaTeX\ is a \textit{macro package} for the \TeX\ engine). The user produces the output document by giving that input file to the \TeX\ engine.
+&
+Пользователи \LaTeX\ набирают файл, содержащий текст с вкраплениями комманд, например команд, описывающих то, как текст должен быть отформатирован. Это реализованно как набор связанных команд, которые взаимодействуют с программой для вёрстки текста \TeX\ Дональда Е. Кнута (выражаясь техническим языком \LaTeX\ это \textit{макропакет} для движка \TeX). Пользователь создаёт готовый документ, передавая этот входной файл движку \TeX.
+\\
+The term \LaTeX\ is also sometimes used to mean the language in which the document is marked up, that is, to mean the set of commands available to \LaTeX user.
+&
+Так же иногда термин \LaTeX\ используется для обозначения языка, на котором был размечен документ, то-есть для обозначения набора команд доступных пользователю \LaTeX.
+\\
+The name \LaTeX\ is short for "Lamport \TeX\ ". It is pronounced LAH-teck or LAY-teck, or sometimes LAY-tecks. Inside a document, produce the logo with \LaTeX. Where use of the logo is not sensible, such as in plain text, write it as 'LaTeX'.
+&
+Название \LaTeX\ это сокращение для "Лэмпорт \TeX". Оно произносится как ла-тэк или лэ-тэк, или, иногда, как лэ-текс. Воспроизвести логотип внутри документа можно с помощью \textbackslash LaTeX. Когда использование логотипа не имеет смысла, как например в неформатированном тексте, пишите его как 'LaTeX'.
+\end{longtable}
+
+\section{Starting and editing}
+
+\begin{longtable}{p{7.5cm}p{7.5cm}}
+\hline
+Original & Перевод \\
+\hline
+
+\LaTeX\ files have a simple global structure, with a standard beginning and ending. Here is a "hello, world" example:
+&
+У файлов \LaTeX\ простая общая структура, с стандартным началом и концом. Вот пример "Привет мир"
+\\
+
+\begin{lstlisting}
+\documentclass{article}
+\begin{document}
+Hello, \LaTeX\ world.
+\end{document}
+\end{lstlisting}
+
+\\
+Here, the 'article' is the so-called \textit{document class}, implemented in a file \verb|article.cls|. Any document class can be used. A few document classes are defined by \LaTeX\ itself, and vast array of others are widely available. See Chapter 3 [Document classes], page 8.
+&
+В этом примере 'article' это так называемый \textit{класс документа}, реализованный в файле \verb|article.cls|. Любой класс документа может быть использован. Несколько классов документов определены самим \LaTeX ом, и огромное множество других широко распространено. Смотри Главу 3 [Классы документов], страница 8.
+\\
+You can inclue other \LaTeX\ commands between the \verb|\documentclass| and  the \verb|\begin{document}| commands. This area is called the \textit{preamble}
+&
+Вы можете включать другие команды \LaTeX\ между командами \verb|\documentclass| и \verb|\begin{document}|. Эта область называется \textit{преамбулой}.
+\\
+The \verb|\begin{document} ... \end{document}| is so called \textit{environment}; the 'document' environment (and no others) is required in all \LaTeX\ documents (see Section 8.6 [document], page 41). \LaTeX\ provides many environments itself, and many more are defined separately. See Chapter 8 [Environments], page 37.
+&
+\verb|begin{document} ... \end{document}| это так называемое \textit{окружение}; Окружение 'документа' необходимо для всех \LaTeX\ документов (смотри Раздел 8.6 [документ], страница 41). \LaTeX\ сам предоставляет множество окружений, и намного больше определенно отдельно. Смотри главу 8 [Окружения], страница 37.
+\\
+The following sections discuss how to produce PDF or other output from a \LaTeX\ input file.
+&
+В следующем разделе обсуждается как получить PDF или другой вывод из входного \LaTeX\ файла
+\\
+\end{longtable}
+
+\section{Output files}
+
+\begin{longtable}{p{7.5cm}p{7.5cm}}
+\hline
+Original & Перевод \\
+\hline
+
+\LaTeX produces a main output file and at least two accessory files. The main output file's name ends in either .dvi or .pdf.
+&
+\LaTeX создаёт главный файл и по меньшей мере ещё два вспомогательных. Имя главного файла заканчивается либо на .dvi либо на .pdf.
+\\
+\textbf{.dvi} \newline
+If \LaTeX\ is invoked with the system command \textbf{latex} then it produces a DeVice Independent file, with extension .dvi. You can view this file with a command such as \textbf{xdvi}, or convert it to a PostScript \textbf{.ps} file with \textbf{dvips} or to a Portable Document Format \textbf{.pdf} file with \textbf{dvipdfmx}. The contents of the file can be dumped in human-readable form with \textbf{dvitype}. A vast array of other DVI utility programs are available (http://mirror.ctan.org/dviware).
+&
+Если \LaTeX\ вызван с помощью системной команды \textbf{latex}, то он создаёт файл формата DeVice Independent, с расширением .dvi. Вы можете просмотреть этот файл с помощью команды вроде \textbf{xdvi} или преобразовать его в файл формата PostScript \textbf{.ps} с помощью \textbf{dvips} или в файл формата Portable Document Format \textbf{.pdf} с помощью \textbf{dvipdfmx}. Содержимое созданного файла может быть выгружено в человеко-читаемой форме с помощью \textbf{dvitype}. Доступно огромное множество других програм для работы с DVI (http://mirror.ctan.org/dviware).
+\\
+\textbf{.pdf} \newline
+If \LaTeX\ is invoked via the system command pdflatex, among other commands (see Section 2.3 [\TeX\ engines], page 4), then the main output is a Portable Document Format (PDF) file. Typically this is a self-contained file, with all fonts and images included
+&
+Если \LaTeX\ вызван через системную команду pdflatex, наряду с другими (смотри раздел 2.3 [\TeX\ engines], страница 4), тогда главный получаемый файл будет иметь формат Portable Document Format (PDF). Это обычно самодостаточный файл, включающий все шрифты и изображения
+\\
+\LaTeX also produces at least two additional files
+&
+Так же \LaTeX создаёт по меньшей мере два дополнительных файла
+\\
+\textbf{.log} \newline
+This transcript file contains summary information such as a list of loaded packages. It also includes diagnostic messages and perhaps additional information for any errors.
+&
+---НУЖОН ПЕРЕВОД СЛОВА TRANSCRIPT---. Также он включает отладочные сообщения и, возможно, дополнительную информацию об ошибках.
+\\
+\textbf{.aux} \newline
+Auxiliary information is used by \LaTeX\ for things such as cross references. For example, the first time that \LaTeX\ finds a forward reference---a cross reference to something that has not yet appeared in the source---it will apear in the output as a doubled question mark ??. When the referred-to spot does not eventually appear in the source the \LaTeX\ writes its location information to this \textbf{.aux} file. On the next invocation, \LaTeX\ reads the location information from this file and uses it to resolve the reference, replacing the double question mark with the remembered location.
+&
+\textbf{.aux} \newline
+Вспомогательная информация, используемая \LaTeX\ для таких вещей, как перекрёстные ссылки. Например, когда \LaTeX\ впервые находит прямую ссылку---перекрёстную ссылку на что-то что ещё не появилось в источнике---она отобразится в выводе как двойной знак вопроса ??. Если указанное место так и не появляется в источнике \LaTeX\ записывает информацию об его расположении в \textbf{.aux} файл. При последующем вызове, \LaTeX\ читает информацию о расположении из этого файла и использует её для определения ссылок, заменяя двойной знак вопроса на запомненное расположение.
+\\
+\LaTeX\ may produce yet more files, characterized by the filename ending. These include a \textbf{.lot} file that is used to make a list of figures, a \textbf{.lot} file used to make a list of tables, and a \textbf{.toc} file used to make a table of contents. A particular class may create others; the list is open-ended.
+&
+\LaTeX\ может создавать и другие файлы, отличающиеся расширением. К таким файлам относятся \textbf{.lot} файлы, которые используюся для создания списка фигур, \textbf{.lot} файл используемый для создания списка таблиц и \textbf{.toc} файл, используемый для создания оглавления. Особые классы могут создавать другие; приведённый список неокончательный.
+\\
+\end{longtable}
+
+\section{\TeX\ engines}
+
+\begin{longtable}{p{7.5cm}p{7.5cm}}
+\hline
+Original & Перевод \\
+\hline
+\LaTeX\ is defined to be a set of commands that are run by a \TeX\ implementation (see Chapter 2 [Overview], page3). This section gives a terse overview of the main programs.
+&
+\LaTeX\ определяется как набор команд, запускаемых реализациями \TeX. В этом разделе представлен краткий обзор основных из них.
+\\
+\textbf{pdflatex} \newline
+In \TeX\ Live (http://tug.org/texlive), if \LaTeX\ is invoked via either the system command \textbf{latex} or \textbf{pdflatex}, then the pdf\TeX\ engine is run (http://ctan.org/pkg/pdftex). When invoked as \textbf{latex}, the main output is a \textbf{.dvi} fil; as \textbf{pdflatex}, the main output is a \textbf{.pdf} file. \newline
+pdf\TeX\ incorporates the e-\TeX\ extensions to Knuth's original program (http://ctan.org/pkg/etex), including additional programming features and bi-directional typesetting, and has plenty of extensions of its own. e-\TeX\ is available on its own as the system command \textbf{etex}, but this is plain \TeX\ (and produces \textbf{.dvi}). \newline
+In other \TeX\ distributions, \textbf{latex} may invoke e-\TeX\ rather than pdf\TeX.In any case, the e-\TeX\ extensions can be assumed to be available in \LaTeX.
+&
+В \TeX\ Live (http://tug.org/texlive), если \LaTeX\ запущен с помощью системной команды \textbf{latex} или \textbf{pdflatex}, то запускается движок pdf\TeX\ (http://ctan.org/pkg/pdftex). Если запущен \textbf{latex}, то главным выводом будет файл формата \textbf{.dvi}, если \textbf{pdflatex}, то формата .pdf. \newline
+pdf\TeX\ включает расширение e-\TeX\ для оригинальной программы Кнута (http://ctan.org/pkg/etex), включая дополнительные возможности программирования и двухстороннюю вёрстку, а также множество собственных дополнений. e-\TeX\ доступен через свою системную команду \textbf{etex}, однако то простой \TeX\ (и создаёт \textbf{.dvi}). \newline
+В других сборках \TeX\, \textbf{latex} может ссылаться на e-\TeX\ вместо pdf\TeX.В любом случае можно считать  расширения e-\TeX\ доступными в \LaTeX.
+\textbf{pdflatex} \newline
+
+\\
+\textbf{lualatex} \newline
+If \LaTeX\ is invoked via the system command \textbf{lualatex}, the Lua\TeX\ engine is run (http://ctan.org/pkg/luatex). This program allows code written in the scripting language Lua (http://luatex.org) to interact with \TeX's typesetting. Lua\TeX\ handles UTF-8 Unicode input natively, can handle Open-Type and TrueType fonts, and produces a \textbf{.pdf} file by default. The is also \textbf{dviluatex} to produce a \textbf{.dvi} file, but this is rarely used.
+&
+\textbf{lualatex} \newline
+\\
+\textbf{xelatex} \newline
+If \LaTeX\ is invoked with the system command \textbf{xelatex}, the Xe\TeX\ engine is run (http://tug.org/xetex). Like Lua\TeX\, Xe\TeX\ natively supports UTF-8 Unicode and TrueType and OpenType fonts, though the implementation is completely different, mainly using external libraries instead of internal code Xe\TeX\ produces a \textbf{.pdf} file as output; it does not support DVI output. \newline
+Internally, Xe\TeX\ creates an \textbf{.xdv} file, a variant of DVI, and translates that to PDF using the \textbf{(x)dvipdfmx} program, but this process is automatic. The \textbf{.xdv} file is only useful for debugging.
+&
+\textbf{xelatex} \newline
+\\
+Other variants of \LaTeX\ and \TeX\ exist, e.g., to provide additional support for Japanese and other languages
+&
+
+\end{longtable}
+
+\section{\LaTeX\ command syntax}
+
+\begin{longtable}{p{7.5cm}p{7.5cm}}
+\hline
+Original & Перевод \\
+\hline
+
+If the \LaTeX\ input file, a command name starts with a backslash character, \textbackslash. The name itself then consists of either (a) a string of letters or (b) a single non-letter. 
+&
+Если входной файл содержит команду, начинающуюся на символ обратной черты \textbackslash, то имя состоит либо (а) из строки состоящей из букв, либо (b) из одного не буквенного символа.
+\\
+\LaTeX\ commands names are case sensitive so that \verb|\pagebreak| differs from \verb|\Pagebreak| (the latter is not a standard command). Most commands are lowercase, but in any event you must enter all commands in the same case as the are defined.
+&
+Имена команд \LaTeX\ чувствительны к регистру, так \verb|\pagebreak| отличается от \verb|\Pagebreak| (последняя не является стандартной командой). Большинство команд это строчные буквы, но в любом случае вы должны вводить команды в том же регистве, как они были определенны.
+\\
+A command may be followed by zero, one, or more arguments. These arguments may be either required or optional. Required arguments are contained in curly braces, {...}. Optional arguments are contained in quare brackets, [...]. Generally, but not universally ifthe command accepts an optional argument, it comes first, before any required arguments.
+&
+За командой может следовать ни одного, один или более аргументов. Эти аргументы могут быть как необходимыми, так и не обязательными. Необходимые аргументы содержатся в фигурных скобках, {...}. Необязательные аргументы содержатся в квадратных скобках, [...]. В основном, но не всегда если команда принимает необязательные аргументы, то они идут первыми, перед всеми необходимыми аргументами.
+\\
+Inside of an optional argument, to use the character close square bracket (]) hide it inside curly braces, as in \verb|\item[closing bracket{]}]|. Similarly, if an optional argument comes last, with no required arguments after it, then to make the first character of the following text be an open square bracket, hide it inside curly braces.
+&
+Чтобы использователь закрывающуюся квадратную скобку (]) внутри необязательного аргумента спрячьте её между фигурных скобок, как в \verb|\item[closing bracket{]}]|. Похожим образом, если необязательный аргументы стоит последним, без необходимых аргументов после него для того чтобы сделать первый символ идущего следом текса открывающейся квадратной скобкой спрячьте её между фигурных скобок
+\\
+\LaTeX\ has the convention that some commands have a \textbf{*} form that is related to the form without \textbf{*}, such as \verb|\chapter| and \verb|\chapter*|. The exact difference in behaviour varies from command to command.
+*
+В \LaTeX\ есть соглашение, что у некоторых команд есть \textbf{*} форма, которая связана с формой без \textbf{*}, такие как \verb|\chapter| и \verb|\chapter*|. Разница их поведения отличается от команды к команде.
+\\
+This manual describes all accepted options and *-forms for the commands it covers (barring unintentional omissions, a.k.a. bugs).
+&
+Эта инструкция описывает все принимаемые параметры и *-формы для команд, которые она описывает (за исключением ненамеренных ошибок, так называемых багов).
+
+\end{longtable}
+
+\subsection{Environments}
+
+\begin{longtable}{p{7.5cm}p{7.5cm}}
+\hline
+Original & Перевод \\
+\hline
+Symopsis: & \\
+\begin{lstlisting}
+	\begin{environment name}
+		...
+	\end{environment name}
+\end{lstlisting}
+\\
+An area of \LaTeX\ source, inside of which there is a distinct behavior. For instance, for poetry in \LaTeX\ put the lines between \verb|\begin{verse}| and \verb|\end{verse}|.
+&
+Область кода \LaTeX\, со своим поведением врутри. Например, для того чтобы записать стих запишите строки между \verb|\begin{verse}| и \verb|\end{verse}|.
+\\
+\begin{lstlisting}
+	\begin{verse}
+		There once was a man from Nantucket \\
+		...
+	\end{verse}
+\end{lstlisting}
+\\
+See Chapter 8 [Environments], page 37, for a list of environments.
+&
+\\
+The \textit{environment name} at the begining must exactly match that at the end. This includes the case where \textit{environment name} ends in a star (*); bothe the \verb|\begin| and \verb|\end| texts must include the star.
+&
+\textit{Имя окрежения} (\textit{environment name}) в начале(begin) должено в точности совпадать с тем, тем что в конце(end). Это касается и случая, когда \textit{имя окружения} заканчивается символом астериск(*) - оба текста в \verb|\begin| и \verb|\end| должны включасть астериск.
+\\
+Environments may have arguments, including optional arguments. This example produces a table. The first argument is optional (and causes the table to be aligned on its top row) while the second argument is required (it specifies the formatting of columns).
+&
+Окружения могут иметь аргументы, включая необязательные аргументы. Этот пример создаёт таблицу. Первый аргумент опциональный (приводит к выравниванию таблицы по верхней строке), тогда как второй аргумент обязательный (необходим) (он опреденяет форматирование колонок).
+\\
+\begin{lstlisting}
+	\begin{tabular}[t]{r|l}
+		... rows of table ...
+	\end{tabular}
+\end{lstlisting}
+\end{longtable}
+
+\subsection{Commands declarations}
+
+\begin{longtable}{p{7.5cm}p{7.5cm}}
+\hline
+Original & Перевод \\
+\hline
+A command that changes the value, or changes the meaning, of some other commands or parameter. For instance, the \verb|\mainmatter| command changes the setting of page numbers from roman numerals to arabic.
+&
+Команда, которая изменяет значение или изменяет смысл некоторой другой программы или параметра. Например, команда \verb|\mainmatter| изменяет параметры номера страницы с римских чисел на арабские.
+\end{longtable}
+
+\subsection{\ttcsname{makeatletter} and \ttcsname{makeatother}}
+
+\begin{longtable}{p{7.5cm}p{7.5cm}}
+\hline
+Original & Перевод \\
+\hline
+Symopsis: & \\
+\begin{lstlisting}
+	\makeatletter
+		... definition of commands with @ in their name ...
+	\makeatletter
+\end{lstlisting}
+&
+... определение комманд с @ в их имени ...
+\\
+Used to redefine internal \LaTeX\ commands. \verb|\makeatletter| makes the at-sign character @ have the category code of a letter, 11. \verb|\makeatother| sets the category code of @ to 12, its original value.
+&
+Используется для переопределения внутренних комманд \LaTeX\ . \verb|\makeatletter| меняет код кадегории символа @ на 11. \verb|\makeatother| устанавливает код категории @ на 12, его оригинальное значение.
+\\
+As each character is read by \TeX\ for \LaTeX, it is assigned a character category code, or \textit{catcode} for short. For instance, the backslash \verb|\| is assigned the catcode 0, for characters that start a command. These two commands alter the catcode assigned to @.
+&
+Каждому символу, прочитанному \TeX\ для \LaTeX\ он устанавливает код категории символа, или сокращённо \textit{catcode}. Например, обратной черте \verb|\| назначен catcode 0, для для символов начинающих команду. Эти две команды меняют catcode назначенный символу @.
+\\ 
+The alteration is needed because many of \LaTeX's commands use @ in their name, to prevent users from accidentally defining a command that replaces one of \LaTeX's own. Command names consist of a category 0 character, ordinarily backslash, followed by letters, category 11 characters (except that a command name can also consist of a category 0 character followed by a single non-letter symbol). So under the default category codes user-defined commands cannot contain an @. But \verb|\makeatletter| and \verb|\makeatother| allow users to define or redefine commands named with @.
+&
+Это изменение необходимо, так как множество комманд \LaTeX использует @ в их именах, чтобы предостеречь пользователей от случайного определения комманд, которые заменяют принадлежат \LaTeX. Имена команд состоят из символа категории 0, как правило обратной черты, за которой следуют буквы, символы с категорией 11 (за исключением команд чьи имена также могут содержать символ категории 0, за которым следует один символ не являющийся буквой). Так что в стандартной категории кодов пользовательские команды не могул содержать @, но \verb|\makeatletter| и \verb|\makeatother| разрешают пользователю определить или переопределить команды с символом @.
+\\
+Use these two commands inside a .tex file, in the preamble, when defining or redefining a command with @ in its name. Don't use them inside \textbf{.sty} or \textbf{.cls} files since the \verb|\usepackage| and \verb|\documentclass| commands set the at sign to have the character code of a letter.
+&
+Используйте две эти команды в .tex файле, в преамбуле, когда определяете или переопределяете команды с символом @ в их названии. Не используйте их внутри \textbf{.sty} и \textbf{.cls} файлах так как комманды \verb|\usepackage| и \verb|documentclass| устанавливаю код символа буквы для символа @.
+\\
+For a comprehensive list of macros with an at-sign in their names see \textbf{http://ctan.org/pkg/macros2e}. These macros are mainly intended to package or class authors
+&
+Для полного списка макросов включающих символ @ в их имена смотрите \textbf{http://ctan.org/pkg/macros2e}. Эти макросы в основном предназначены для авторов пакетов и классов.
+\\
+The example below is typical. In the user's class file is a command \verb|\thesis@universityname|. The user wants to change the definition. These three lines should go in the preamble, before the \verb|\begin{document}|.
+&
+Следующий пример типичен. В пользовательском файле классв есть команда \verb|thesis@universityname|. Пользователь хочет изменить определение. Следующие три строки должны быть добавлены в преамбулу, перед \verb|\begin{document}|.
+\\
+\begin{lstlisting}
+	\makeatletter
+	\revewcommand{\thesis@universityname}{Saint Michael's College}
+	\makeatother
+\end{lstlisting}
+\\
+\end{longtable}
+
+\subsection{\ttcsname{\ @ifstar}}
+
+\begin{longtable}{p{7.5cm}p{7.5cm}}
+\hline
+Original & Перевод \\
+\hline
+Synopsis:
+\\
+\begin{lstlisting}
+	\newcommand{\mycmd}{\@ifstar{\mycmd@star}{\mycmd@nostar}}
+	\newcommand{\mycmd@nostar}[non-starred command number of args]{
+		body of non-starred command
+	}
+	\newcommand{\mycmd@star}[starred command number of args]{
+		body of starred command
+	}
+\end{lstlisting}
+\\
+Many standard \LaTeX\ environments or commands have a variant with the same name but ending with a star character *, an asterisk. Examples are the table and table* environments and the \verb|\section| and \verb|\section*| commands.
+&
+Множество стандартных сред и комманд \LaTeX\ обладают вариантами с одинаковым именем, заканчивающихся на звезду *, астериск. Примерами являются среды table и table* и команды \verb|\section| и \verb|\section*|.
+\\
+When defining environments, following this pattern is straightforward because \verb|\newenvironment| and \verb|\renewenvironment| allow the environment name to contain a star. For commands the situation is more complex. As in the synopsis above, there will be a user-called command, given above as \verb|\mycmd|, which peeks ahead to see if it is followed by a star. For instance, \LaTeX\ does not really have a \verb|\section*| command; instead, the \verb|\section| command peeks ahead. This command does not accept arguments but instead expands to one of two commands that do accept arguments. In the synopsis these two are \verb|\mycmd@nostar| and \verb|\mycmd@star|. They could take the same number of arguments or a different number or no arguments at all. As always in a \LaTeX\ document a command using at-sign @ must be enclosed inside a \verb|\makeatletter ... \makeatother| block.
+&
+При определении сред, следование этим шаблонам не вызывает затруднений, потому что \verb|newenvironment| и \verb|\renewenvironment| позволяют названию среды содержать астериск. Для команд ситуация более сложная. Как в конспекте(примере) выше, когда будет вызвана пользовательская команда, названная выше \verb|\mycmd|, которая взглянет вперёд чтобы узнать следует ли за ней звезда. Например, в \LaTeX\ на самом деле нет команды \verb|\section*|, вместо неё команда \verb|\section| взглянит вперёд. Эта команда не принимает аргументы, но вместо этого разворачивается до одной из двух команд, которые принимают. В кратком обзоре это команды \verb|\mycmd@nostar| и \verb|mycmd@star|. Они могут принимать одинаковое количество аргументов или разное, или вообще не принимать аргументов. Как обычно в документе \LaTeX\ команды использующие @ должны быть заключены в блок \verb|\makeatletter ... \makeatother|.
+\\
+This example of \verb|\@ifstar| defines the command \verb|\ciel| and a variant \verb|\ciel*|. Both have one required argument. A call to \verb|\ciel{night}| will return "starry night sky" while \verb|\ciel*{blue}| will return "starry not blue sky".
+&
+Этот пример использования \verb|\@ifstar| определяет команду \verb|\ciel| и модификацию \verb|\ciel*|. Они обе имеют один необходимый аргумент. Вызов \verb|\ciel{night}| вернёт "starry night sky" тогда как \verb|\ciel*{blue}| вернёт "night not blue sky".
+\\
+\begin{lstlisting}
+	\newcommand*{\ciel@unstarred}[1]{starry #1 sky}
+	\newcommand*{\ciel@starred}[1]{starry not #1 sky}
+	\newcommand*{\ciel}{\@ifstar{\ciel@starred}{\ciel@unstarred}}
+\end{lstlisting}
+\\
+In the next example the starred variant takes a different number of arguments than does the unstarred one. With this definition, Agent 007's \verb|"My name is \agentsecret*{Bond},| \verb|\agentsecret{James}{Bond}"| is equivalent to \verb|"My name is \textsc{Bond}, \textit{James}| \verb| textsc{Bond}."|.
+&
+В следующем примере модификация со звездой принимает отличное от команды без звезды количество аргументов. Со следующим определением, Агента 007 результат \verb|"My name is \agentsecret*{Bond},| \verb|\agentsecret{James}{Bond}"| соответствует \verb|"My name is \textsc{Bond}, \textit{James}| \verb| textsc{Bond}."|.
+\\
+\begin{lstlisting}
+	\newcommand*{\agentsecret@unstarred}[2]{\textit{#1} \textsc{#2}}
+	\newcommand*{\agentsecret@starred}[1]{\textsc{#1}}
+	\newcommand*(\agentsecret}{\@ifstar{\agentsecret@starred}
+		{\agentsecret@unstarred}}
+\end{lstlisting}
+\\
+There are two sometimes more convinient ways to accomplish the work of \verb|\@ifstar|. The suffix package allows the construct \verb|\newcommand\mycommand{unstarred version}| followed by \verb|\WithSuffix\newcommand\mycommand| \verb|*{starred version}|. And \LaTeX3 has the xparse package that allows this code.
+&
+Есть два порой более удобных способа совершить работу \verb|@ifstar|. Суффиксный пакет позволяет построить составить \verb|newcommand\mycommand{unstarred version}| после \verb|\WithSuffix\newcommand\mycommand| |verb|*{starred version}|. А также \LaTeX3 включает пакет xparse, который позволяет использовать следующий код.
+\\
+\begin{lstlisting}
+	\NewDocumentCommand\foo{s}{\IfBooleanTF#1
+		{starred version}%
+		{unstarred version}%
+	}
+\end{lstlisting}
+\\
+\end{longtable}
+
+\subsection{}
+
+\begin{longtable}{p{7.5cm}p{7.5cm}}
+\hline
+Original & Перевод \\
+\hline
+\end{longtable}
+
+\end{document}

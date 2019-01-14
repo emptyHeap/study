@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Internet</title>
+</head>
+<body>
+  <div class="bordered nomargin" id="header">
+  </div>
+  <div id="body">
+    <h1>Internet</h1>
+    <div class="post-item">
+      <form id="add-cat-form" action="cats" method="post">
+        <h2>Добавь кота</h2>
+        <label for="">имя</label>
+        <input type="text" name="name">
+        <br>
+        <label for="">вес</label>
+        <input type="text" name="weight">
+        <br>
+        <label for="">возраст</label>
+        <input type="text" name="age">
+        <br>
+        <label for="">цвет</label>
+        <input type="text" name="color">
+        <br>
+        <button onclick="addCat()" type="button">добавить</button>
+      </form>
+    </div>
+    <div class="get-item">
+      <form id="get-cat-form" action="cats" method="get">
+        <h2>Найди кота</h2>
+        <label for="">имя</label>
+        <input type="text" name="name">
+        <br>
+        <button onclick="getCat()" type="button">найти</button>
+      </form>
+    </div>
+    <div>
+      <h2>Cat info</h2>
+      <p id="cat-info"></p>
+    </div>
+  </div>
+  <div id="footer">
+  </div>
+</body>
+
+<script src="dich.js"></script>
+</html>
