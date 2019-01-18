@@ -353,6 +353,109 @@ There are two sometimes more convinient ways to accomplish the work of \verb|\@i
 \\
 \end{longtable}
 
+\section{Document classes}
+
+\begin{longtable}{p{7.5cm}p{7.5cm}}
+\hline
+Original & Перевод \\
+\hline
+The document's overall class is defined with this command, which is normally the first command in a \LaTeX\ source file
+&
+Общий класс документа определяется с помощью этой команды, обычно она является первой в исходном файле документа \LaTeX.
+\\
+\begin{lstlisting}
+	\documentclass[options]{class}
+\end{lstlisting}
+\\
+The following document \textit{class} names are built into \LaTeX. (Many other document classes are available as separate packages).
+&
+Представленные ниже имена классов документа встроены в \LaTeX. (Многие другие классы документа доступны в качестве отдельных пакетов).
+\\
+\verb|article|
+\\
+For a journal article, a presentation, and miscellaneous general use.
+&
+Для журнальной статьи, презентации и другого общего использования
+\\
+\verb|book|
+\\
+Full-length books, including chapters and possibly including front matter, such as a preface, and back matter, such as an appendix
+&
+Полноразмерные книги, включающие главы и возможно включающие титульные листы, такие как пролог и дополнительные материалы, приложение.
+\\
+\verb|letter|
+\\
+Mail, optionally including mailing labels
+&
+Почта с возможностью включения адресного ярлыка
+\\
+\verb|report|
+\\
+For documents of length between an article and a book, such as technical reports or theses, which may contain several chapters.
+&
+Для документов размером от статьи до книги, таких как технические отчёты и дисертации, которые могут содержать несколько глав.
+\\
+\verb|slides|
+\\
+For slide presentations - rarely used today. In its place the beamer package perhaps the most prevalent.
+&
+Для презентаций, сегодня используется редко. Пакет beamer возможно предпочтительней всего использовать мнесто этого класса.
+\\
+Standard \textit{options} are described in the next section
+&
+Стандартные параметры описаны в следующей секции
+\end{longtable}
+
+\subsection{Document class options}
+
+\begin{longtable}{p{7.5cm}p{7.5cm}}
+\hline
+Original & Перевод \\
+\hline
+You can specify so-called \textit{global options} or \textit{class options} to the \verb|\documentclass| command by enclosing them in square brackets. To specify more than one \textit{option} separate them with a coma as in:
+&
+Вы можете определить так называетмые \textit{глобальные параметры} или \textit{параметры класса} для комманды \verb|\documentclass| заключая их в квадратные скобки. Для добавления более чем одного параметра, разделите их занятой, как указанно далее:
+\\
+\begin{lstlisting}
+	\documentclass[option1,option2,...]{class}
+\end{lstlisting}
+\\
+Here is the list of the standsrd class options.
+&
+Далее представлен список стандартных параметров класса
+\\
+All of the standard classes except \textbf{slides} accept the following options for selecting the typeface size (default is 10pt):
+&
+Все базовые классы, кроме \textbf{slides} принимают следующие параметры для выбора размера гарнитуры (по умолчанию 10pt):
+\\
+\verb|10pt 11pt 12pt|
+\\
+All of the standard classes accept these options for selecting the paper size (these show height by width):
+&
+Все базовые классы принимают эти параметры для выбора размера бумаги (они отображают высоту на ширину):
+\\
+\verb|a4 paper| - 210 by 297 mm
+\verb|a5 paper| - 148 by 210 mm
+\verb|b6 paper| - 176 by 250 mm
+\verb|executivepaper| - 7.25 by 10.5 inches
+\verb|legalpaper| - 8.25 by 14 inches
+\verb|latterpaper| - 8.5 by 11 inches (the default)
+\\
+When using one of the engined pdf\LaTeX, Lua\LaTeX, or Xe\LaTeX, options other than \textbf{letterpaper} set the print area but you must also set the physical paper size. One way to do that is to put \verb|\pdfpagewith=\paperwidth| and \verb|\pdfpageheight=\paperheight| in your document's preamble.The \verb|geometry| package provides flexible ways of setting the print area and physical page size.
+&
+Когда вы используюте один из следующих движков: pdf\LaTeX, Lua\LaTeX, или Xe\LaTeX, параметры, помимо \textbf{letterpaper} устанавливают области печати, но вы также должны указать физический размер бумаги. Один из способов сделать это, это добавить \verb|\pdfpagewith=\paperwidth| и \verb|\pdfpageheight=\paperheight| в преамбулу вашего документа. Пакет \verb|geometry| предоставляет гибкие пути настройки области печати и физического размера страницы.
+\\
+Miscellaneous other options:
+&
+Другие параметры:
+\\
+\verb|draft final| 
+\\
+Mark (\textbf{draft} or do not mark (\textbf{final}) overfull boxes with a black box in the margin; default is \textbf{final}.
+&
+
+\end{longtable}
+
 \subsection{}
 
 \begin{longtable}{p{7.5cm}p{7.5cm}}
@@ -360,5 +463,38 @@ There are two sometimes more convinient ways to accomplish the work of \verb|\@i
 Original & Перевод \\
 \hline
 \end{longtable}
+
+\subsection{}
+
+\begin{longtable}{p{7.5cm}p{7.5cm}}
+\hline
+Original & Перевод \\
+\hline
+\end{longtable}
+
+\subsection{}
+
+\begin{longtable}{p{7.5cm}p{7.5cm}}
+\hline
+Original & Перевод \\
+\hline
+\end{longtable}
+
+\subsection{}
+
+\begin{longtable}{p{7.5cm}p{7.5cm}}
+\hline
+Original & Перевод \\
+\hline
+\end{longtable}
+
+\subsection{}
+
+\begin{longtable}{p{7.5cm}p{7.5cm}}
+\hline
+Original & Перевод \\
+\hline
+\end{longtable}
+
 
 \end{document}
