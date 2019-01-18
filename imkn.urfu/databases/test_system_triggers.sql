@@ -101,3 +101,22 @@ $$ LANGUAGE plpgsql;
 --- PROCEDURES ---
 ------------------
 
+--- CREATE OR REPLACE PROCEDURE categories_tree () LANGUAGE plpgsql AS $$
+--- BEGIN
+--- 	PERFORM row_to_json(categories) FROM categories;
+--- 	RETURN;
+--- END;
+--- $$;
+
+DROP FUNCTION IF EXISTS course_structure(integer);
+CREATE OR REPLACE FUNCTION course_structure(tree_depth int) RETURNS TABLE (col json) AS $$
+BEGIN
+	RETURN QUERY
+		SELECT
+			row_to_json(category)
+		FROM
+			categories as category
+		WHERE
+			category.parent_id IS NULL;
+END;
+$$ LANGUAGE plpgsql;
