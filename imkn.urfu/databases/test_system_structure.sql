@@ -14,13 +14,14 @@ DROP TABLE IF EXISTS users CASCADE;
 
 CREATE TABLE users (
 	id				serial PRIMARY KEY,
-	name			char(64),
-	password_hash	char(1024)
+	name			varchar(64),
+	email			varchar(1024),
+	password_hash	varchar(1024)
 );
 
 CREATE TABLE categories (
 	id				serial PRIMARY KEY,
-	name			char(1024),
+	name			varchar(1024),
 	description		text,
 	parent_id		int,
 
@@ -29,7 +30,7 @@ CREATE TABLE categories (
 
 CREATE TABLE questions (
 	id				serial PRIMARY KEY,
-	text			char(4096),
+	text			varchar(4096),
 	category_id		int NOT NULL,
 	number			int NOT NULL,
 	has_help		boolean DEFAULT false,
@@ -47,7 +48,7 @@ CREATE TABLE questions_help (
 
 CREATE TABLE options (
 	id				serial PRIMARY KEY,
-	text			char(4096),
+	text			varchar(4096),
 	correct			boolean,
 	question_id		int NOT NULL,
 	number			int,
@@ -58,7 +59,7 @@ CREATE TABLE options (
 
 CREATE TABLE users_quizzes (
 	id				serial PRIMARY KEY,
-	token			char(1024) UNIQUE,
+	token			varchar(1024) UNIQUE,
 	user_id			int NOT NULL,
 
 	CONSTRAINT fk_user_id FOREIGN KEY (user_id) REFERENCES users (id)
@@ -66,7 +67,7 @@ CREATE TABLE users_quizzes (
 
 CREATE table modes (
 	id				serial PRIMARY KEY,
-	name			char(256) UNIQUE,
+	name			varchar(256) UNIQUE,
 	default_weight	float NOT NULL
 );
 

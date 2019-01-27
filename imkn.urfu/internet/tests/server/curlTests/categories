@@ -1,0 +1,5 @@
+#!/bin/bash
+curl localhost:8080/category/ \
+-H 'Content-Type:application/json' \
+-X GET \
+-vv
