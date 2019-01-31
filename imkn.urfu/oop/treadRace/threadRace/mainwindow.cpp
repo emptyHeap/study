@@ -7,7 +7,7 @@ MainWindow::MainWindow(QWidget *parent)
     for (unsigned long i = 0; i < threadsAmount; i++)
     {
         racingVariables[i] = 0;
-        std::thread* newThread = new std::thread(this->infiniteUpdate, &racingVariables[i]);
+        std::thread* newThread = new std::thread(MainWindow::infiniteUpdate, &racingVariables[i]);
         racingThreads[i] = newThread;
     }
 
