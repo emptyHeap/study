@@ -1,0 +1,38 @@
+import React from 'react'
+import CategoryNode from './category-node'
+import category from '../services/categories'
+
+class Categories extends React.Component {
+  constructor(props) {
+    super(props)
+
+    this.state = {
+      categories: this.props.categories || null
+    }
+  }
+
+  componentWillReceiveProps() {
+    console.log('RECEIVE PROPS ', this.props)
+    this.setState(this.props)
+  }
+
+  //async componentWillMount() {
+  //  const categories = await category.get();
+  //  this.setState({
+  //    categories: categories.json
+  //  })
+  //}
+
+  render() {
+    return <div className="categories-list">
+      <h1>Выбор категории</h1>
+      <div>
+        {this.state.categories
+          ? this.state.categories.map(category => <CategoryNode {...category}/>)
+          : <div> Loading ... </div>}
+      </div>
+    </div>
+  }
+}
+
+export default Categories

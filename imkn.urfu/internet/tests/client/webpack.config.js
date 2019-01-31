@@ -1,7 +1,18 @@
 const webpack = require('webpack');
+const path = require('path');
 
 module.exports = {
-  entry: './src/index.js',
+  mode: 'development',
+  entry: [
+    '@babel/polyfill',
+    './src/index.js',
+//    'webpack-hot-middleware/client',
+  ],
+  output: {
+    path: __dirname + '/dist',
+    publicPath: '/',
+    filename: 'bundle.js'
+  },
   module: {
     rules: [
       {
@@ -14,16 +25,22 @@ module.exports = {
   resolve: {
     extensions: ['*', '.js', '.jsx']
   },
-  output: {
-    path: __dirname + '/dist',
-    publicPath: '/',
-    filename: 'bundle.js'
-  },
+  //devtool: 'module-source-map',
+  // strange
+  devtool: 'cheap-module-source-map',
+  // not working
+  //devtool: 'cheap-module-eval-source-map',
+  //devtool: 'source-map',
   plugins: [
     new webpack.HotModuleReplacementPlugin()
   ],
   devServer: {
-    contentBase: './dist',
-    hot: true
+    host: '0.0.0.0',
+    //publicPath: '/assets/',
+    contentBase: path.resolve(__dirname, './views'),
+    watchContentBase: true,
+    hot: true,
+    inline: true,
+    historyApiFallback: true,
   }
 };

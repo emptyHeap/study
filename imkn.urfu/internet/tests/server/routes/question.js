@@ -6,13 +6,16 @@ const {pageSize} = require('../lib/const')
 
 router.get('/', async (ctx) => {
   const {page, pages, categoryId} = ctx.query
-  const questions = await Question.list({
+  const {rows, count} = await Question.list({
     limit: pages*pageSize,
     offset: page*pageSize,
     categoryId,
   })
 
-  ctx.body = questions
+  ctx.body = {
+    rows,
+    pages: Math.ceil(count/pageSize),
+  }
 })
 
 router.get('/:id/help', async (ctx) => {

@@ -1,5 +1,5 @@
 #!/bin/bash
-curl localhost:8080/auth/login \
+curl localhost:3000/auth/login \
 -H 'Content-Type:application/json' \
 -X POST \
--d '{"email":"no@na.me","password":"qweqwe"}' -vv
+-d '{"email":"no@na.me","password":"qweqwe"}' -vvv

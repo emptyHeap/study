@@ -13,9 +13,18 @@ class Question {
       OFFSET $2`,
       [limit, offset, categoryId]
     )
+    const {rows:[{count}]} = await db.query(`
+      SELECT count(*)
+      FROM questions
+      WHERE category_id = $1`,
+      [categoryId]
+    )
     db.release()
 
-    return questions
+    return {
+      count,
+      rows: questions
+    }
   }
 
   static async check({id, mode, number, sid}) {
